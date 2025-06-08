@@ -19,7 +19,7 @@ class FitnessBookingTestCase(unittest.TestCase):
         self.assertIn('name', data[0])
 
     def test_booking_and_get_bookings(self):
-        # Book a class
+        
         response = self.app.post('/book', json={
             "class_id": 1,
             "client_name": "Test User",
@@ -29,7 +29,7 @@ class FitnessBookingTestCase(unittest.TestCase):
         booking = json.loads(response.data)
         self.assertEqual(booking['client_email'], "test@example.com")
 
-        # Get bookings by email
+        
         response2 = self.app.get('/bookings?email=test@example.com')
         self.assertEqual(response2.status_code, 200)
         bookings = json.loads(response2.data)
